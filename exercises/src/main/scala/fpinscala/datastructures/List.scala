@@ -52,10 +52,13 @@ object List { // `List` companion object. Contains functions for creating and wo
 
   def tail[A](l: List[A]): List[A] = {
     case Nil => sys.error("tail of empty list")
-    case (_, xs) => xs
+    case Cons(_, xs) => xs
   }
 
-  def setHead[A](l: List[A], h: A): List[A] = sys.error("todo")
+  def setHead[A](l: List[A], h: A): List[A] = {
+    case Nil => sys.error("set head of empty list")
+    case Cons(_, xs) => Cons(h, xs)
+  }
 
   def drop[A](l: List[A], n: Int): List[A] = sys.error("todo")
 
